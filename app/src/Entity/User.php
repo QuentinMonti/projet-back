@@ -6,7 +6,7 @@ use Cacofony\BaseClasse\BaseEntity;
 use DateTime;
 use Exception;
 
-class Post extends BaseEntity
+class User extends BaseEntity
 {
     private int $id;
     private DateTime $createdAt;
@@ -54,54 +54,36 @@ class Post extends BaseEntity
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getUsername(): string
     {
-        return $this->title;
+        return $this->username;
     }
 
     /**
-     * @param string $title
+     * @param string $username
      * @return Post
      */
-    public function setTitle(string $title): self
+    public function setUsername(string $username): self
     {
-        $this->title = $title;
+        $this->username = $username;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getPassword(): string
     {
-        return $this->content;
+        return $this->password;
     }
 
     /**
-     * @param string $content
+     * @param string $password
      * @return Post
      */
-    public function setContent(string $content): self
+    public function setPassword(string $password): self
     {
-        $this->content = $content;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAuthorId(): int
-    {
-        return $this->authorId;
-    }
-
-    /**
-     * @param int $authorId
-     * @return Post
-     */
-    public function setAuthorId(int $authorId): self
-    {
-        $this->authorId = $authorId;
+        $this->password = $password;
         return $this;
     }
 }
