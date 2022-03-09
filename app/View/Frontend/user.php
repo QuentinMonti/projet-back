@@ -25,6 +25,7 @@ use App\Entity\Post;
             <li><?php echo($user->getId()); ?></li>
             <li><?php echo($user->getCreatedAt())->format("d-m-Y"); ?></li>
             <li><?php echo($user->getUsername()); ?></li>
+            <li><?php echo($user->getRole()); ?></li>
         </ul>
         </br>
     <?php endforeach; ?>

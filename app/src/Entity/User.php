@@ -8,11 +8,11 @@ use Exception;
 
 class User extends BaseEntity
 {
-    private int $id;
-    private DateTime $createdAt;
-    private string $title;
-    private string $content;
-    private int $authorId;
+    public int $id;
+    public DateTime $createdAt;
+    public string $username;
+    public string $password;
+    public string $role;
 
     /**
      * @return int
@@ -72,18 +72,36 @@ class User extends BaseEntity
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPwd(): string
     {
         return $this->password;
     }
 
     /**
-     * @param string $password
+     * @param string $pwd
      * @return Post
      */
-    public function setPassword(string $password): self
+    public function setPwd(string $pwd): self
     {
-        $this->password = $password;
+        $this->pwd = $pwd;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     * @return Post
+     */
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
         return $this;
     }
 }
