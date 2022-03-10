@@ -59,19 +59,30 @@ class PostController extends BaseController
         $this->renderJSON(['message' => 'Ca marche aussi en fonction de la méthode, testez moi !']);
     }
 
-     /**
+    /**
+     * @Route(path="/new")
+     * @return void
+     */
+    public function getCreate()
+    {
+        $this->render('frontend/createPost', [], '');
+    }
+
+    /**
      * @Route(path="/new")
      * @param PostManager $postManager
      * @return void
      */
-    public function postCreate(PostManager $postManager)
+    public function Create(PostManager $postManager)
     {
-        if(isset($_POST['name']) && isset($_POST['pwd'])  ){
+        if(isset($_POST['createdAt']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['authorId']) ){
             
-            $name = $_POST['name'];
-            $pwd = $_POST['pwd'];
+            $date = new \DateTime('d:m:Y');
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $authorId = '1';
 
-            $createUser = $userManager->createUser($name, $pwd);
+            $createUser = $postManager->createPost($date, $title, $content, $authorId);
 
             var_dump( $createUser);
         }

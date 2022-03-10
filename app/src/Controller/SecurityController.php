@@ -67,7 +67,7 @@ class SecurityController extends BaseController
         $this->render('Security/create', [], '');
     }
 
-     /**
+    /**
      * @Route(path="/create")
      * @param UserManager $userManager
      * @return void
