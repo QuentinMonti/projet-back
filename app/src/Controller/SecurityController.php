@@ -32,7 +32,7 @@ class SecurityController extends BaseController
 
         foreach ($users as $user)
         {
-            if($user->username == $_POST['username'] && $user->pwd == $_POST['password'])
+            if($user->username == $_POST['username'] && $user->pwd == hash('sha256', $_POST['password']))
             {
                 $connect = true;
             }
@@ -77,7 +77,7 @@ class SecurityController extends BaseController
         if(isset($_POST['name']) && isset($_POST['pwd'])  ){
             
             $name = $_POST['name'];
-            $pwd = $_POST['pwd'];
+            $pwd = hash('sha256', $_POST['password']);
 
             $createUser = $userManager->createUser($name, $pwd);
 
