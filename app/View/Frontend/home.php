@@ -20,11 +20,27 @@ use App\Entity\Post;
 <p><?= $strongText; ?></p>
 <p>Des paramètres autowire dans le service : <?= $appSecret; ?></p>
 
-<ul>
-    <?php /** @var $posts Post[] */
-    foreach ($posts as $post) : ?>
-        <li><a href="/show/<?= $post->getId(); ?>-test"><?= $post->getTitle(); ?></a></li>
-    <?php endforeach; ?>
-</ul>
+<div class="mt-6 p-2">
+    <ul class="columns" style='flex-wrap: wrap;'>
+        <?php /** @var $posts Post[] */
+        foreach ($posts as $post) : ?>
+            <div class="card column is-3 p-0 m-1">
+                <div class="card-content">
+                    <li class="content">
+                        <a href="/show/<?= $post->getId(); ?>-test">
+                            <?= $post->getTitle(); ?>
+                        </a>
+                    </li>
+                </div>
+                <footer class="card-footer p-0">
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+        <?php endforeach; ?>
+    </ul>
+</div> 
+<a class="button" href="/new">create post</a>
+<a class="button" href="/user">List user</a>
 
 

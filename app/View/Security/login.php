@@ -1,15 +1,31 @@
-<h1>Please LogIn</h1>
+<h1 class="title">Please LogIn</h1>
 
 <form method="post">
-    <div class="mb-3">
-        <label for="exampleInputUsername" class="form-label">Username</label>
-        <input type="text" class="form-control" id="exampleInputUsername" aria-describedby="usernameHelp" name="name">
-        <div id="usernameHelp" class="form-text">We'll never share your username with anyone else.</div>
+    <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" placeholder="Username" id="exampleInputUsername" aria-describedby="usernameHelp" name="username">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </p>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="pwd">
+    <div class="field">
+        <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password" id="exampleInputPassword1" name="password">
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>
+        </p>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/create">creer un compte</a>
-</form>
+    <div class="field">
+        <p class="control">
+            <button class="button is-success" type="submit">
+                Login
+            </button>
+            <a class="button" href="/create">Create an acompt</a>
+        </p>
+    </div>
+</form> 

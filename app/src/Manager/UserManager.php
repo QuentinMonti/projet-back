@@ -15,7 +15,7 @@ class UserManager extends BaseManager
             $statement->bindValue('pwd', $pwd);
             $statement->execute();
             
-            return "New record created successfully";
+            return true;
         } catch(\PDOException $e) {
             return  "<br> voici l'erreur:" . $e->getMessage();
 

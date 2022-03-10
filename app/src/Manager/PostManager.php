@@ -7,18 +7,19 @@ use Cacofony\BaseClasse\BaseManager;
 class PostManager extends BaseManager
 {
 
-    function createPost($date, $title, $content, $author)
+    function createPost($title, $content)
     {
+        $authorId = '1';
+
         try 
         {    
-            $statement = $this->pdo->prepare("INSERT INTO User(username, pwd) VALUES (:dateCreation, :title, :content, :author)");
-            $statement->bindValue('dateCreation', $date);
+            $statement = $this->pdo->prepare("INSERT INTO Post(title, content, authorId) VALUES (:title, :content, :authorId)");
             $statement->bindValue('title', $title);
             $statement->bindValue('content', $content);
-            $statement->bindValue('author', $author);
+            $statement->bindValue('authorId', $authorId);
             $statement->execute();
 
-            return "New record created successfully";
+            return true;
         } catch(\PDOException $e) {
             return  "<br> voici l'erreur:" . $e->getMessage();
 

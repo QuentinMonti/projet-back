@@ -74,14 +74,17 @@ class SecurityController extends BaseController
      */
     public function postCreate(UserManager $userManager)
     {
-        if(isset($_POST['name']) && isset($_POST['pwd'])  ){
+        if(isset($_POST['username']) && isset($_POST['password'])  ){
             
-            $name = $_POST['name'];
+            $name = $_POST['username'];
             $pwd = hash('sha256', $_POST['password']);
 
             $createUser = $userManager->createUser($name, $pwd);
 
-            var_dump( $createUser);
+            if($createUser)
+            {
+                $this->HTTPResponse->redirect('/');
+            }
         }
     }
 }

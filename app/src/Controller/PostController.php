@@ -75,16 +75,17 @@ class PostController extends BaseController
      */
     public function postNew(PostManager $postManager)
     {
-        if(isset($_POST['createdAt']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['authorId']) ){
+        if(isset($_POST['title']) && isset($_POST['content'])){
             
-            $date = new \DateTime('d:m:Y');
             $title = $_POST['title'];
             $content = $_POST['content'];
-            $authorId = '1';
 
-            $createUser = $postManager->createPost($date, $title, $content, $authorId);
+            $createPost = $postManager->createPost($title, $content);
 
-            var_dump( $createUser);
+            if($createPost)
+            {
+                $this->HTTPResponse->redirect('/');
+            }
         }
     }
 }
