@@ -63,7 +63,7 @@ class PostController extends BaseController
      * @Route(path="/new")
      * @return void
      */
-    public function getCreate()
+    public function getNew()
     {
         $this->render('frontend/createPost', [], '');
     }
@@ -73,7 +73,7 @@ class PostController extends BaseController
      * @param PostManager $postManager
      * @return void
      */
-    public function Create(PostManager $postManager)
+    public function postNew(PostManager $postManager)
     {
         if(isset($_POST['createdAt']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['authorId']) ){
             
