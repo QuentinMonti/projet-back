@@ -7,6 +7,7 @@ use Cacofony\BaseClasse\BaseController;
 use Cacofony\Helper\AuthHelper;
 use App\Manager\UserManager;
 use Firebase\JWT\JWT;
+use Cacofony\Factory\PDOFactory;
 
 class SecurityController extends BaseController
 {
@@ -43,7 +44,7 @@ class SecurityController extends BaseController
             $_SESSION['user_badge'] = $jwt;
             $this->HTTPResponse->redirect('/');
         } else { 
-            echo("usename or password incorrect");
+            $this->HTTPResponse->redirect('/');
         }
     }
 
@@ -67,34 +68,20 @@ class SecurityController extends BaseController
     }
 
      /**
-     * @Route(path="/login")
+     * @Route(path="/create")
      * @param UserManager $userManager
      * @return void
      */
     public function postCreate(UserManager $userManager)
     {
-        if(isset($_POST['username']) && isset($_POST['password'])  ){
-            $servername = "localhost";
-            $username = "username";
-            $password = "password";
-            $dbname = "mt4-data";
-            $name = $_POST['username'];
-            $pwd = $_POST['password'];
+        if(isset($_POST['name']) && isset($_POST['pwd'])  ){
+            
+            $name = $_POST['name'];
+            $pwd = $_POST['pwd'];
 
-            try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                // set the PDO error mode to exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO User (username, pwd)
-                VALUES ($name, $pwd)";
-                // use exec() because no results are returned
-                $conn->exec($sql);
-                echo "New record created successfully";
-                } catch(PDOException $e) {
-                echo $sql . "<br>" . $e->getMessage();
-            }
+            $createUser = $userManager->createUser($name, $pwd);
 
-            $conn = null;
+            echo $createUser;
         }
     }
 }

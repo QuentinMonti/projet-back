@@ -39,7 +39,10 @@ class PDOFactory implements FactoryInterface
 
     private function getPostgresConnection()
     {
-        // TODO - add real connection
+        $username = "username";
+        $password = "password";
+        $dbname = "mt4-data";
+        return new \PDO('mysql:host=localhost;dbname=' . $dbname, $username, $password);
     }
 
     public function getPDO(): \PDO
