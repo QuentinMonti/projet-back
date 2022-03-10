@@ -81,7 +81,7 @@ class SecurityController extends BaseController
 
             $createUser = $userManager->createUser($name, $pwd);
 
-            echo $createUser;
+            var_dump( $createUser);
         }
     }
 }

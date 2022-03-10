@@ -58,4 +58,22 @@ class PostController extends BaseController
     {
         $this->renderJSON(['message' => 'Ca marche aussi en fonction de la méthode, testez moi !']);
     }
+
+     /**
+     * @Route(path="/new")
+     * @param PostManager $postManager
+     * @return void
+     */
+    public function postCreate(PostManager $postManager)
+    {
+        if(isset($_POST['name']) && isset($_POST['pwd'])  ){
+            
+            $name = $_POST['name'];
+            $pwd = $_POST['pwd'];
+
+            $createUser = $userManager->createUser($name, $pwd);
+
+            var_dump( $createUser);
+        }
+    }
 }
